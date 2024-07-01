@@ -17,29 +17,9 @@ import Swal from 'sweetalert2';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-  loginForm: FormGroup;
-
   constructor(
     private fb: FormBuilder,
     private http: UsuarioService,
     private router: Router
-  ) {
-    this.loginForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required]]
-    });
-  }
-
-  onSubmit() {
-    if (this.loginForm.valid) {
-      this.http.login(this.loginForm.value).subscribe(response => {
-        // Manejar la respuesta del servidor
-        Swal.fire('Login Successful', 'You have successfully logged in!', 'success');
-        this.router.navigate(['/dashboard']); // Navega al dashboard o a la página principal
-      }, error => {
-        // Manejar el error
-        Swal.fire('Login Failed', 'Invalid credentials', 'error');
-      });
-    }
-  }
+  ) { }
 }

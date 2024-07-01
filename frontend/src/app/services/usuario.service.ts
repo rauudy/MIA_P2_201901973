@@ -38,7 +38,5 @@ export class UsuarioService {
     return this.http.delete(route, {headers: this.headers});
   }
 
-  login(data: any){
-    return this.consult_post('auth/login', data);
-  }
+
 }
