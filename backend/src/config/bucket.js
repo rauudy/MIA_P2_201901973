@@ -1,24 +1,20 @@
-const aws = require('aws-sdk');
 require('dotenv').config();
+const AWS = require('aws-sdk');
 
-const {
-    BUCKET_USER_ID,
-    BUCKET_USER_SECRET,
-    BUCKET_NAME,
-    BUCKET_REGION
-} = process.env;
+AWS.config.update({
+    region: process.env.AWS_REGION
+});
+
+const BUCKET_NAME = 'ht2miavacas'; // Nombre de tu bucket S3
 
 const uploadFile = async (req, res) => {
-    const { path, imagen} = req.body;
-    // 062620241234012340.jpg
-    const buffer = new Buffer.from(path, 'base64');
-    aws.config.update({
-        accessKeyId: BUCKET_USER_ID,
-        secretAccessKey: BUCKET_USER_SECRET,
-        region: BUCKET_REGION
-    });
+    const { path, imagen } = req.body;
+    const buffer = Buffer.from(path, 'base64');
 
-    const s3 = new aws.S3();
+    const s3 = new AWS.S3({
+        accessKeyId: process.env.BUCKET_USER_ID,
+        secretAccessKey: process.env.BUCKET_USER_SECRET
+    });
 
     const params = {
         Bucket: BUCKET_NAME,
@@ -28,43 +24,40 @@ const uploadFile = async (req, res) => {
     };
 
     s3.putObject(params, (err, data) => {
-        if(err) {
+        if (err) {
             console.error(err);
-            return res.status(500
-            ).send('Error al subir la imagen');
+            return res.status(500).send('Error al subir la imagen');
         }
         console.log(data);
         return res.status(200).send('Imagen subida correctamente');
     });
 };
 
-
 const uploadFile2 = async (path, imagen) => {
-    // 062620241234012340.jpg
-    const buffer = new Buffer.from(imagen, 'base64');
-    console.log('Bucket: ', BUCKET_USER_ID)
-    const s3 = new aws.S3({
-        accessKeyId: BUCKET_USER_ID,
-        secretAccessKey: BUCKET_USER_SECRET,
-        ContentType: 'image/jpeg/png',
-        ACL: 'public-read',
+    const buffer = Buffer.from(imagen, 'base64');
+
+    const s3 = new AWS.S3({
+        accessKeyId: process.env.BUCKET_USER_ID,
+        secretAccessKey: process.env.BUCKET_USER_SECRET
     });
 
     const params = {
         Bucket: BUCKET_NAME,
         Key: path,
         Body: buffer,
+        ContentType: 'image/jpeg/png',
+        ACL: 'public-read'
     };
 
-    await s3.upload(params, function sync(err, data) {
-        if (err) {
-            console.log("Error", err);
-        } else {
-            console.log('Ubicacion de la imagen: ', data.Location);  
-            return data.Location;
-        }});  
+    try {
+        const data = await s3.upload(params).promise();
+        console.log('Ubicacion de la imagen:', data.Location);
+        return data.Location;
+    } catch (err) {
+        console.error('Error al subir la imagen:', err);
+        throw err;
+    }
 };
-
 
 module.exports = {
     uploadFile,
