@@ -8,6 +8,18 @@ const {
     BUCKET_REGION
 } = process.env;
 
+// Función para verificar la configuración de AWS
+const checkAWSConfig = () => {
+    console.log('Verificando configuración de AWS:');
+    console.log('BUCKET_USER_ID:', BUCKET_USER_ID ? 'Configurado' : 'No configurado');
+    console.log('BUCKET_USER_SECRET:', BUCKET_USER_SECRET ? 'Configurado' : 'No configurado');
+    console.log('BUCKET_NAME:', BUCKET_NAME);
+    console.log('BUCKET_REGION:', BUCKET_REGION);
+};
+
+// Ejecuta la verificación al cargar el módulo
+checkAWSConfig();
+
 // Configuración de AWS
 AWS.config.update({
     accessKeyId: BUCKET_USER_ID,
@@ -22,12 +34,16 @@ const uploadFile = async (req, res) => {
         const { path, imagen } = req.body;
         const buffer = Buffer.from(path, 'base64');
 
+        console.log('Intentando subir archivo...');
+        console.log('Bucket:', BUCKET_NAME);
+        console.log('Key:', imagen);
+
         const params = {
             Bucket: BUCKET_NAME,
             Key: imagen,
             Body: buffer,
             ACL: 'public-read',
-            ContentType: 'image/jpeg' // Ajusta según el tipo de imagen
+            ContentType: 'image/jpeg'
         };
 
         const data = await s3.upload(params).promise();
@@ -42,14 +58,14 @@ const uploadFile = async (req, res) => {
 const uploadFile2 = async (path, imagen) => {
     try {
         const buffer = Buffer.from(imagen, 'base64');
-        console.log('Bucket:', BUCKET_NAME); // Cambiado de BUCKET_USER_ID a BUCKET_NAME para mayor claridad
+        console.log('Bucket:', BUCKET_NAME);
 
         const params = {
             Bucket: BUCKET_NAME,
             Key: path,
             Body: buffer,
             ACL: 'public-read',
-            ContentType: 'image/jpeg' // Ajusta según el tipo de imagen
+            ContentType: 'image/jpeg/png'
         };
 
         const data = await s3.upload(params).promise();
@@ -57,21 +73,9 @@ const uploadFile2 = async (path, imagen) => {
         return data.Location;
     } catch (error) {
         console.error('Error al subir la imagen:', error);
-        throw error; // Re-lanza el error para manejarlo en el llamador
+        throw error;
     }
 };
-
-// Función para verificar la configuración de AWS
-const checkAWSConfig = () => {
-    console.log('Verificando configuración de AWS:');
-    console.log('BUCKET_USER_ID:', BUCKET_USER_ID ? 'Configurado' : 'No configurado');
-    console.log('BUCKET_USER_SECRET:', BUCKET_USER_SECRET ? 'Configurado' : 'No configurado');
-    console.log('BUCKET_NAME:', BUCKET_NAME);
-    console.log('BUCKET_REGION:', BUCKET_REGION);
-};
-
-// Ejecuta la verificación al cargar el módulo
-checkAWSConfig();
 
 module.exports = {
     uploadFile,
