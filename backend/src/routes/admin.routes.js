@@ -38,27 +38,27 @@ router.post('/registro_viaje',
 
 // Consultas
 
-router.get('/admin/getUsuarios',
+router.get('/getUsuarios',
     adminController.getUsuarios
 );
 
-router.post('/admin/deleteUsuarios',
+router.post('/deleteUsuarios',
     adminController.deleteUsuarios
 );
 
-router.get('/admin/getAuto',
+router.get('/getAutos',
     adminController.getAutos
 );
 
-router.post('/admin/deleteAuto',
+router.post('/deleteAuto',
     adminController.deleteAutos
 );
 
-router.get('/admin/getViajes',
+router.get('/getViajes',
     adminController.getViajes
 );
 
-router.post('/admin/deleteViajes',
+router.post('/deleteViajes',
     adminController.deleteViajes
 );
 
