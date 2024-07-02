@@ -34,7 +34,7 @@ app.get('/', (req ,res) => {
 app.post('/api/login', async (req, res) => {
     const { usuario, password } = req.body;
     const result = await authenticateUser(usuario, password);
-    
+    console.log(result)
     if (result.success) {
         res.status(200).json(result.user);
     } else {
