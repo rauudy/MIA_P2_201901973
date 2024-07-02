@@ -47,7 +47,7 @@ const authenticateUser = async (username, password) => {
 
         console.log(user);
         if (user && password == user.password) {
-            alert("Usuario tipo: " + user.tipoUsuario);
+            // alert("Usuario tipo: " + user.tipoUsuario);
             return { success: true, user: user };
         } else {
             console.log("Usuario no encontrado");
