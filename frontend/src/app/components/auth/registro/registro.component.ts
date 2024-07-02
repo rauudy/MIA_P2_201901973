@@ -118,7 +118,7 @@ export class RegistroComponent {
                 icon: 'success',
                 confirmButtonText: 'Aceptar'
               });
-              // this.router.navigate(['']);
+              this.router.navigate(['/login']);
             }else{
               Swal.fire({
                 title: 'Error al registrar usuario',
