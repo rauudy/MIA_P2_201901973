@@ -1,5 +1,6 @@
 const { insertData } = require('../config/db.mongo');
 const { uploadFile2 } = require('../config/bucket');
+const { getData, deleteData } = require('../config/db.mongo');
 // const { bcrypt } = require('bcryptjs');
 
 const ciclo_for = async (req, res) =>  {
