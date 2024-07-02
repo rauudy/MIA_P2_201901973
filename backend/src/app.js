@@ -38,7 +38,8 @@ app.post('/api/login', async (req, res) => {
     if (result.success) {
         res.status(200).json(result.user);
     } else {
-        res.status(401).json({ message: result.message });
+        console.log(result.message);
+        // res.status(401).json({ message: result.message });
     }
 });
 
