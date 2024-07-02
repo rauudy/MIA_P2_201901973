@@ -25,7 +25,9 @@ export class LoginComponent {
 
   constructor(
     private fb: FormBuilder,
-    private authService: AuthService) { }
+    private authService: AuthService,
+    private router: Router
+    ) { }
 
   form_login = new FormGroup({
     usuario: new FormControl('', Validators.required),
@@ -46,7 +48,14 @@ export class LoginComponent {
             icon: 'success',
             confirmButtonText: 'Aceptar'
           });
-          // this.router.navigate(['/dashboard']);
+
+          if (response.tipoUsuario == 'admin') {
+            this.router.navigate(['/admin']);
+          }else if (response.tipoUsuario == 'turista') {
+            this.router.navigate(['/turista']);
+          }else if (response.tipoUsuario == 'recepcionista') {
+            this.router.navigate(['/recepcionista']);
+          }
           // Handle successful login, e.g., store user data, navigate to dashboard, etc.
         },
         error => {
