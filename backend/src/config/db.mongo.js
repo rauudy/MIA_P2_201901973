@@ -1,6 +1,5 @@
 const { MongoClient, ObjectId} = require('mongodb');
 require('dotenv').config();
-require('dotenv').config();
 
 const {
     MONGO_USER,

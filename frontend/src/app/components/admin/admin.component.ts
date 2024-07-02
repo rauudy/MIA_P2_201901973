@@ -32,6 +32,9 @@ export class AdminComponent {
     private authService: AuthService,
   ) {
     this.currentUser = this.authService.getCurrentUser();
+    this.getUsuarios();
+    this.getAutos();
+    this.getViajes();
   }
 
   imagen: any = '';
