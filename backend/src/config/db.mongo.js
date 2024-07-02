@@ -31,6 +31,33 @@ const insertData = async(collec, data) => {
     }
 };
 
+const authenticateUser = async (usuario, password) => {
+    const mongoClient = new MongoClient(uri);
+    try {
+        await mongoClient.connect();
+        const dbmongo = mongoClient.db(MONGO_DATABASE);
+        const coleccion = dbmongo.collection('Usuarios');
+        const user = await coleccion.findOne({ usuario: usuario });
+        const user_correo = await coleccion.findOne({ correo: usuario });
+
+        console.log(user);
+        if (user && password == user.password) {
+            console.log(user);
+            return { success: true, user: user };
+        } else {
+            console.log("Usuario no encontrado");
+            return { success: false, message: 'Invalid credentials' };
+        }
+    } catch (error) {
+        console.error('Error authenticateUser: ', error);
+        return { success: false, message: 'Error during authentication' };
+    } finally {
+        await mongoClient.close();
+    }
+};
+
+
 module.exports = {
     insertData,
+    authenticateUser,
 };
