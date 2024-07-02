@@ -28,4 +28,8 @@ router.post('/registro',
     adminController.registro
 );
 
+router.post('/registro_auto',
+    adminController.registrar_auto
+);
+
 module.exports = router;
