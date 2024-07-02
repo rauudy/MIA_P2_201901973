@@ -39,6 +39,11 @@ const authenticateUser = async (username, password) => {
         const coleccion = dbmongo.collection('Usuarios');
         const user = await coleccion.findOne({ usuario: username });
         // const user_correo = await coleccion.findOne({ correo: username });
+        // si el usuario no existe se usara el correo electronico
+        if (!user) {
+            const user_correo = await coleccion.findOne({ correo: username });
+            user = user_correo;
+        }        
 
         console.log(user);
         if (user && password == user.password) {
