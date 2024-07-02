@@ -75,7 +75,7 @@ export class AdminComponent {
         this.http.consult_post('/admin/registro', this.form_registro.value).subscribe({
           next: (data: any) => {
             if (data.status) {
-              debugger
+              // debugger
               console.log('Usuario registrado');
               console.log(data.image)
               this.ruta_aws = data.image;
@@ -122,10 +122,10 @@ export class AdminComponent {
   registrar_auto() {
     if (this.form_autos.valid) {
       // console.log('Formulario completo');
-      this.http.consult_post('/admin/registro_auto', this.form_registro.value).subscribe({
+      this.http.consult_post('/admin/registro_auto', this.form_autos.value).subscribe({
         next: (data: any) => {
           if (data.status) {
-            debugger
+            // debugger
             console.log('Auto registrado');
             Swal.fire({
               title: 'Auto registrado',
