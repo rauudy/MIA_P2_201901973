@@ -70,7 +70,8 @@ export class RegistroComponent {
     usuario: new FormControl('', Validators.required),
     correo: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required),
-    confirm_password: new FormControl('', Validators.required)
+    confirm_password: new FormControl('', Validators.required),
+    tipoUsuario: new FormControl('', Validators.required),
   });
 
   // [
