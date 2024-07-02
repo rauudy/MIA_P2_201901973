@@ -27,16 +27,15 @@ export class LoginComponent {
     private fb: FormBuilder, 
     private authService: AuthService) {  }
   
-    loginForm = new FormGroup({
-    username: new FormControl('', Validators.required),
+    form_login = new FormGroup({
+    usuario: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required)
   });
 
   login() {
-    if(this.loginForm.valid){
-      //const { usuario, password } = this.loginForm.value;
-      const usuario = '' + this.loginForm.value.username;
-      const password = '' + this.loginForm.value.password;
+    if(this.form_login.valid){
+      const usuario = '' + this.form_login.value.usuario;
+      const password = '' + this.form_login.value.password;
       console.log("Usuario: "+usuario );
       this.authService.login(usuario, password).subscribe(
         response => {
