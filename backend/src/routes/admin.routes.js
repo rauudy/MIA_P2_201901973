@@ -38,7 +38,7 @@ router.post('/registro_viaje',
 
 // Consultas
 
-router.post('/admin/getUsuarios',
+router.get('/admin/getUsuarios',
     adminController.getUsuarios
 );
 
@@ -46,7 +46,7 @@ router.post('/admin/deleteUsuarios',
     adminController.deleteUsuarios
 );
 
-router.post('/admin/getAuto',
+router.get('/admin/getAuto',
     adminController.getAutos
 );
 
@@ -54,7 +54,7 @@ router.post('/admin/deleteAuto',
     adminController.deleteAutos
 );
 
-router.post('/admin/getViajes',
+router.get('/admin/getViajes',
     adminController.getViajes
 );
 

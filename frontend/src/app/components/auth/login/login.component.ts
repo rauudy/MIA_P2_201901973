@@ -40,7 +40,7 @@ export class LoginComponent {
       const password = '' + this.form_login.value.password;
       console.log("Usuario: " + usuario);
       console.log("Pass: " + password);
-      debugger
+      // debugger
       this.authService.login(usuario, password).subscribe(
         response => {
           Swal.fire({
