@@ -24,7 +24,10 @@
                         <li>
                             <a class="dropdown-item d-flex align-items-center" href="#">
                                 <i class="bi bi-box-arrow-right"></i>
-                                <span>Sign Out</span>
+                                <span class="navbar-text">
+                                    {{currentUser?.usuario}}
+                                    <button class="btn btn-outline-danger ms-3" (click)="logout()">Cerrar sesión</button>
+                                </span>
                             </a>
                         </li>
 

@@ -4,6 +4,7 @@ import { ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterOutlet, RouterModule } from '@angular/router';
 import { FormGroup, FormControl } from '@angular/forms';
 import { UsuarioService } from '../../services/usuario.service';
+import { AuthService } from '../../services/autenticar.service';
 import Swal from 'sweetalert2'
 
 @Component({
@@ -22,7 +23,8 @@ export class AdminComponent {
 
   constructor(
     private http: UsuarioService,
-    private router: Router
+    private router: Router,
+    private authService: AuthService
   ){}
 
   imagen: any = '';
@@ -149,6 +151,11 @@ export class AdminComponent {
       });
       reader.readAsDataURL(file);
     });
+  }
+
+  logout(){
+    this.authService.logout();
+    this.router.navigate(['/login']);
   }
 
 }

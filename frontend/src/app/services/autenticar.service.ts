@@ -19,10 +19,22 @@ export class AuthService {
   }
 
   login(username: string, password: string): Observable<any> {
-    return this.http.post<any>(this.apiUrl, { username, password });
+    return this.http.post<any>(this.apiUrl, { username, password }).pipe(
+      tap(response => {
+        if (response) {
+          this.currentUserSubject.next(response);
+          console.log(">>>>>>>>>>>"+this.currentUserSubject.value);
+        }
+      })
+    );
   }
 
   getCurrentUser(): any {
     return this.currentUserSubject.value;
+  }
+
+  logout(){
+    this.currentUserSubject.next(null);
+    console.log("Usuario deslogueado");
   }
 }
