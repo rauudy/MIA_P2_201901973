@@ -28,10 +28,6 @@ export class AdminComponent {
     private router: Router,
     private authService: AuthService,
   ){
-    this.init();
-  }
-
-  init(): void {
     this.currentUser = this.authService.getCurrentUser();
   }
 
