@@ -153,6 +153,7 @@ const registrar_viaje = async (req, res) => {
 
 const getUsuarios = async (req, res) => {
     // Recibir los datos enviados desde el cliente
+    console.log("Obteniendo usuario....")
     const result = await getData('Usuarios');
 
     if(result instanceof Error) {
