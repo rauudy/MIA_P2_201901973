@@ -30,6 +30,17 @@ app.get('/', (req ,res) => {
         });
 })
 
+app.post('/api/login', async (req, res) => {
+    const { username, password } = req.body;
+    const result = await authenticateUser(username, password);
+    
+    if (result.success) {
+        res.status(200).json(result.user);
+    } else {
+        res.status(401).json({ message: result.message });
+    }
+});
+
 app.use('/admin', routes_admin);
 app.use('/usuario', routes_usuario);
 app.use('/recepcion', routes_recepcion);
