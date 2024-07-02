@@ -36,7 +36,8 @@ export class LoginComponent {
     if(this.form_login.valid){
       const usuario = '' + this.form_login.value.usuario;
       const password = '' + this.form_login.value.password;
-      console.log("Usuario: "+usuario );
+      console.log("Usuario: " + usuario );
+      console.log("Pass: " + password );
       this.authService.login(usuario, password).subscribe(
         response => {
           alert('Acceso Correcto');
