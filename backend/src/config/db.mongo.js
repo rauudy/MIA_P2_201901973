@@ -38,7 +38,7 @@ const authenticateUser = async (username, password) => {
         const dbmongo = mongoClient.db(MONGO_DATABASE);
         const coleccion = dbmongo.collection('Usuarios');
         const user = await coleccion.findOne({ usuario: username });
-        const user_correo = await coleccion.findOne({ correo: username });
+        // const user_correo = await coleccion.findOne({ correo: username });
 
         console.log(user);
         if (user && password == user.password) {
