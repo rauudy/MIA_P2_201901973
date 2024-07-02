@@ -5,6 +5,7 @@ const morgan = require('morgan'); // npm install morgan
 const routes_admin = require('./routes/admin.routes');
 const routes_usuario = require('./routes/usuario.routes');
 const routes_recepcion = require('./routes/recepcion.routes');
+const { authenticateUser } = require('./config/db.mongo');
 
 const app = express();
 app.use(morgan('dev'));
