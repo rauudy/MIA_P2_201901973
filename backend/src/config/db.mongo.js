@@ -61,8 +61,33 @@ const authenticateUser = async (username, password) => {
     }
 };
 
+// 
+
+const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+
+let db;
+
+const connectDB = async () => {
+    if (!db) {
+        await client.connect();
+        db = client.db('tu_base_de_datos'); // Cambia esto según tu base de datos
+    }
+    return db;
+};
+
+const getDatabase = () => {
+    if (!db) {
+        throw new Error('Database not connected');
+    }
+    return db;
+};
+
+// 
+
 
 module.exports = {
     insertData,
     authenticateUser,
+    connectDB,
+    getDatabase
 };

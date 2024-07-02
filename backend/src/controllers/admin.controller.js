@@ -67,9 +67,18 @@ const registro = async (req, res) => {
     });
 };
 
-
+const obtenerUsuarios = async (req, res) => {
+    try {
+        const db = getDatabase(); // Obtener la base de datos
+        const usuarios = await db.collection('Usuarios').find().toArray();
+        res.status(200).json(usuarios);
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+};
 
 module.exports = {
     ciclo_for,
-    registro
+    registro,
+    obtenerUsuarios
 };
