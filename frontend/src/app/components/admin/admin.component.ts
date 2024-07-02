@@ -20,12 +20,20 @@ import Swal from 'sweetalert2'
   styleUrl: './admin.component.scss'
 })
 export class AdminComponent {
-
+  
+  currentUser: any;
+  
   constructor(
     private http: UsuarioService,
     private router: Router,
-    private authService: AuthService
-  ){}
+    private authService: AuthService,
+  ){
+    this.init();
+  }
+
+  init(): void {
+    this.currentUser = this.authService.getCurrentUser();
+  }
 
   imagen: any = '';
   imagen_path: any = '';
