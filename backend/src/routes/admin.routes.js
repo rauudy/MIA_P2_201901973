@@ -3,7 +3,7 @@ const { check } = require('express-validator');
 
 const validate = require('../middlewares/validateAtributes');
 const adminController = require('../controllers/admin.controller');
-const controlauthenticateUser = require('../config/db.mongo');
+const { authenticateUser } = require('../config/db.mongo');
 
 const router = Router();
 
@@ -28,9 +28,9 @@ router.post('/registro',
     adminController.registro
 );
 
-router.post('/api/login', async (req, res) => {
+router.post('/login', async (req, res) => {
     const { usuario, password } = req.body;
-    const result = await controlauthenticateUser.authenticateUser(usuario, password);
+    const result = await authenticateUser(usuario, password);
     
     if (result.success) {
         res.status(200).json(result.user);
