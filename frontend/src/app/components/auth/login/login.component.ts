@@ -4,7 +4,7 @@ import { FormControl } from '@angular/forms';
 import { AuthService } from '../../../services/autenticar.service';
 
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule} from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterOutlet, RouterModule } from '@angular/router';
 import { UsuarioService } from '../../../services/usuario.service';
 import Swal from 'sweetalert2'
@@ -24,33 +24,48 @@ import Swal from 'sweetalert2'
 export class LoginComponent {
 
   constructor(
-    private fb: FormBuilder, 
-    private authService: AuthService) {  }
-  
-    form_login = new FormGroup({
+    private fb: FormBuilder,
+    private authService: AuthService) { }
+
+  form_login = new FormGroup({
     usuario: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required)
   });
 
   login() {
-    if(this.form_login.valid){
+    if (this.form_login.valid) {
       const usuario = '' + this.form_login.value.usuario;
       const password = '' + this.form_login.value.password;
-      console.log("Usuario: " + usuario );
-      console.log("Pass: " + password );
+      console.log("Usuario: " + usuario);
+      console.log("Pass: " + password);
       this.authService.login(usuario, password).subscribe(
         response => {
-          console.log('Acceso Correcto');
+          Swal.fire({
+            title: 'Acceso correcto',
+            text: 'Has iniciado sesión correctamente',
+            icon: 'success',
+            confirmButtonText: 'Aceptar'
+          });
+          // this.router.navigate(['/dashboard']);
           // Handle successful login, e.g., store user data, navigate to dashboard, etc.
         },
         error => {
-          console.error('Acceso Incorrecto', error);
+          Swal.fire({
+            title: 'Acceso incorrecto',
+            text: 'Usuario o contraseña incorrectos',
+            icon: 'error',
+            confirmButtonText: 'Aceptar'
+          });
           // Handle login failure, e.g., show error message
         }
       );
-    }else{
-      alert('Formulario incompleto');
-      console.log('Formulario incompleto');
+    } else {
+      Swal.fire({
+        title: 'Formulario incompleto',
+        text: 'Por favor, completa todos los campos',
+        icon: 'warning',
+        confirmButtonText: 'Aceptar'
+      });
     }
   }
 }
