@@ -18,8 +18,8 @@ export class AuthService {
     this.currentUser = this.currentUserSubject.asObservable();
   }
 
-  login(username: string, password: string): Observable<any> {
-    return this.http.post<any>(this.apiUrl, { username, password }).pipe(
+  login(usuario: string, password: string): Observable<any> {
+    return this.http.post<any>(this.apiUrl, { usuario, password }).pipe(
       tap(response => {
         console.log(response);
         
