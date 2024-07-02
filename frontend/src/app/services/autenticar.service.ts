@@ -7,7 +7,7 @@ import { tap } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'http://18.214.99.177:3000/api/login';
+  private apiUrl = 'http://3.93.0.237:3000/api/login';
   // private apiUrl = 'http://localhost:3000/api/login';
 
   private currentUserSubject: BehaviorSubject<any>;
