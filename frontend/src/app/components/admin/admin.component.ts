@@ -41,6 +41,23 @@ export class AdminComponent {
     tipoUsuario: new FormControl('', Validators.required),
   });
 
+  form_autos = new FormGroup({
+    nombre: new FormControl('', Validators.required),
+    marca: new FormControl('', Validators.required),
+    placa: new FormControl('', Validators.required),
+    modelo: new FormControl('', Validators.required),
+    precio: new FormControl('', Validators.required),
+    ciudad: new FormControl('', Validators.required),
+  });
+  
+  form_viajes = new FormGroup({
+    nombre: new FormControl('', Validators.required),
+    ciudadO: new FormControl('', Validators.required),
+    ciudadD: new FormControl('', Validators.required),
+    dias: new FormControl('', Validators.required),
+    precio: new FormControl('', Validators.required),
+  });
+
   registrar(){
     if(this.form_registro.valid){
       if(this.form_registro.value.password === this.form_registro.value.confirm_password){
@@ -90,6 +107,24 @@ export class AdminComponent {
         alert('Las contraseñas no coinciden');
         console.log('Las contraseñas no coinciden');
       }
+    }else{
+      alert('Formulario incompleto');
+      console.log('Formulario incompleto');
+    }
+  }
+
+  registrar_auto(){
+    if(this.form_autos.valid){
+      console.log('Formulario completo');
+    }else{
+      alert('Formulario incompleto');
+      console.log('Formulario incompleto');
+    }
+  }
+  
+  registrar_viaje(){
+    if(this.form_autos.valid){
+      console.log('Formulario completo');
     }else{
       alert('Formulario incompleto');
       console.log('Formulario incompleto');

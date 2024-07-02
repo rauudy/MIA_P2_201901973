@@ -51,11 +51,12 @@
 
         <section class="section">
             <div class="row">
+                <!-- ---------------------------------------- -->
                 <div class="col-lg-6">
 
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">General Form Elements</h5>
+                            <h5 class="card-title">CREAR USUARIOS</h5>
 
                             <!-- General Form Elements -->
 
@@ -147,6 +148,134 @@
                     </div>
 
                 </div>
+                <!-- ---------------------------------------- -->
+                <!-- ---------------------------------------- -->
+                <div class="col-lg-6">
+
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">CREAR AUTOS</h5>
+
+                            <!-- General Form Elements -->
+
+                            <form [formGroup]="form_autos" (ngSubmit)="registrar_auto()" class="row g-3 needs-validation"
+                                novalidate>
+                                <div class="col-12">
+                                    <label for="nombre" class="form-label">Nombre</label>
+                                    <input formControlName="nombre" type="text" name="nombre" class="form-control"
+                                        id="nombre" required>
+                                    <div class="invalid-feedback">Please, enter your nombre!</div>
+                                </div>
+
+                                <div class="col-12">
+                                    <label for="marca" class="form-label">Marca</label>
+                                    <input formControlName="marca" type="text" name="marca" class="form-control"
+                                        id="marca" required>
+                                    <div class="invalid-feedback">Please, enter your marca!</div>
+                                </div>
+
+                                <div class="col-12">
+                                    <label for="placa" class="form-label">Placa</label>
+                                    <input formControlName="placa" type="text" name="placa" class="form-control"
+                                        id="placa" required>
+                                    <div class="invalid-feedback">Please, enter your placa!</div>
+                                </div>
+
+                                <div class="col-12">
+                                    <label for="modelo" class="form-label">Modelo</label>
+                                    <input formControlName="modelo" type="text" name="modelo" class="form-control"
+                                        id="modelo" required>
+                                    <div class="invalid-feedback">Please enter your modelo!</div>
+                                </div>
+                                
+                                <div class="col-12">
+                                    <label for="precio" class="form-label">Precio</label>
+                                    <input formControlName="precio" type="text" name="precio" class="form-control"
+                                        id="precio" required>
+                                    <div class="invalid-feedback">Please enter a valid Email adddress!</div>
+                                </div>
+
+                                <div class="col-12">
+                                    <label for="ciudad" class="form-label">Ciudad</label>
+                                    <input formControlName="ciudad" type="text" name="ciudad" class="form-control"
+                                        id="ciudad" required>
+                                    <div class="invalid-feedback">Please enter a valid Email adddress!</div>
+                                </div>
+
+                                
+                                <div class="col-12">
+                                    <button class="btn btn-primary w-100" type="submit">Create Auto</button>
+                                </div>
+
+                            </form>
+
+                            <!--  -->
+
+                        </div>
+                    </div>
+
+                </div>
+                <!-- ---------------------------------------- -->
+                <!-- ---------------------------------------- -->
+                <div class="col-lg-6">
+
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">CREAR VIAJES</h5>
+
+                            <!-- General Form Elements -->
+
+                            <form [formGroup]="form_viajes" (ngSubmit)="registrar_viaje()" class="row g-3 needs-validation"
+                                novalidate>
+                                
+                                <div class="col-12">
+                                    <label for="nombre" class="form-label">Nombre de la agencia</label>
+                                    <input formControlName="nombre" type="text" name="nombre" class="form-control"
+                                        id="nombre" required>
+                                    <div class="invalid-feedback">Please, enter your name!</div>
+                                </div>
+
+                                <div class="col-12">
+                                    <label for="ciudadO" class="form-label">Ciudad de origen</label>
+                                    <input formControlName="ciudadO" type="text" name="ciudadO" class="form-control"
+                                        id="ciudadO" required>
+                                    <div class="invalid-feedback">Please, enter your name!</div>
+                                </div>
+
+                                <div class="col-12">
+                                    <label for="ciudadD" class="form-label">Ciudad de Destino</label>
+                                    <input formControlName="ciudadD" type="text" name="ciudadD" class="form-control"
+                                        id="ciudadD" required>
+                                    <div class="invalid-feedback">Please, enter your name!</div>
+                                </div>
+
+                                <div class="col-12">
+                                    <label for="dias" class="form-label">Dias de viaje</label>
+                                    <input formControlName="dias" type="text" name="dias" class="form-control"
+                                        id="dias" required>
+                                    <div class="invalid-feedback">Please enter a valid Email adddress!</div>
+                                </div>
+                                
+                                <div class="col-12">
+                                    <label for="precio" class="form-label">precio de vuelo</label>
+                                    <input formControlName="precio" type="text" name="precio" class="form-control"
+                                        id="precio" required>
+                                    <div class="invalid-feedback">Please enter a valid Email adddress!</div>
+                                </div>
+
+                                <div class="col-12">
+                                    <button class="btn btn-primary w-100" type="submit">Create Account</button>
+                                </div>
+
+                            </form>
+
+                            <!--  -->
+
+                        </div>
+                    </div>
+
+                </div>
+                <!-- ---------------------------------------- -->
 
                 <div class="col-lg-6">
 
