@@ -26,7 +26,8 @@
                                 <i class="bi bi-box-arrow-right"></i>
                                 <span class="navbar-text">
                                     {{currentUser?.usuario}}
-                                    <button class="btn btn-outline-danger ms-3" (click)="logout()">Cerrar sesión</button>
+                                    <button class="btn btn-outline-danger ms-3" (click)="logout()">Cerrar
+                                        sesión</button>
                                 </span>
                             </a>
                         </li>
@@ -159,8 +160,8 @@
 
                             <!-- General Form Elements -->
 
-                            <form [formGroup]="form_autos" (ngSubmit)="registrar_auto()" class="row g-3 needs-validation"
-                                novalidate>
+                            <form [formGroup]="form_autos" (ngSubmit)="registrar_auto()"
+                                class="row g-3 needs-validation" novalidate>
                                 <div class="col-12">
                                     <label for="nombreA" class="form-label">Nombre</label>
                                     <input formControlName="nombreA" type="text" name="nombreA" class="form-control"
@@ -188,7 +189,7 @@
                                         id="modelo" required>
                                     <div class="invalid-feedback">Please enter your modelo!</div>
                                 </div>
-                                
+
                                 <div class="col-12">
                                     <label for="precioA" class="form-label">Precio</label>
                                     <input formControlName="precioA" type="text" name="precioA" class="form-control"
@@ -203,7 +204,7 @@
                                     <div class="invalid-feedback">Please enter a valid Email adddress!</div>
                                 </div>
 
-                                
+
                                 <div class="col-12">
                                     <button class="btn btn-primary w-100" type="submit">Create Auto</button>
                                 </div>
@@ -226,9 +227,9 @@
 
                             <!-- General Form Elements -->
 
-                            <form [formGroup]="form_viajes" (ngSubmit)="registrar_viaje()" class="row g-3 needs-validation"
-                                novalidate>
-                                
+                            <form [formGroup]="form_viajes" (ngSubmit)="registrar_viaje()"
+                                class="row g-3 needs-validation" novalidate>
+
                                 <div class="col-12">
                                     <label for="nombreV" class="form-label">Nombre de la agencia</label>
                                     <input formControlName="nombreV" type="text" name="nombreV" class="form-control"
@@ -252,11 +253,11 @@
 
                                 <div class="col-12">
                                     <label for="dias" class="form-label">Dias de viaje</label>
-                                    <input formControlName="dias" type="text" name="dias" class="form-control"
-                                        id="dias" required>
+                                    <input formControlName="dias" type="text" name="dias" class="form-control" id="dias"
+                                        required>
                                     <div class="invalid-feedback">Please enter a valid Email adddress!</div>
                                 </div>
-                                
+
                                 <div class="col-12">
                                     <label for="precioV" class="form-label">precio de vuelo</label>
                                     <input formControlName="precioV" type="text" name="precioV" class="form-control"
@@ -278,146 +279,130 @@
                 </div>
                 <!-- ---------------------------------------- -->
 
+                <!-- MOSTRAR USUARIOS -->
                 <div class="col-lg-6">
 
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">Advanced Form Elements</h5>
-
-                            <!-- Advanced Form Elements -->
-                            <form>
-                                <div class="row mb-5">
-                                    <label class="col-sm-2 col-form-label">Switches</label>
-                                    <div class="col-sm-10">
-                                        <div class="form-check form-switch">
-                                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
-                                            <label class="form-check-label" for="flexSwitchCheckDefault">Default switch
-                                                checkbox input</label>
-                                        </div>
-                                        <div class="form-check form-switch">
-                                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked"
-                                                checked>
-                                            <label class="form-check-label" for="flexSwitchCheckChecked">Checked switch
-                                                checkbox input</label>
-                                        </div>
-                                        <div class="form-check form-switch">
-                                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDisabled"
-                                                disabled>
-                                            <label class="form-check-label" for="flexSwitchCheckDisabled">Disabled
-                                                switch checkbox
-                                                input</label>
-                                        </div>
-                                        <div class="form-check form-switch">
-                                            <input class="form-check-input" type="checkbox"
-                                                id="flexSwitchCheckCheckedDisabled" checked disabled>
-                                            <label class="form-check-label"
-                                                for="flexSwitchCheckCheckedDisabled">Disabled checked switch
-                                                checkbox input</label>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row mb-5">
-                                    <label class="col-sm-2 col-form-label">Ranges</label>
-                                    <div class="col-sm-10">
-                                        <div>
-                                            <label for="customRange1" class="form-label">Example range</label>
-                                            <input type="range" class="form-range" id="customRange1">
-                                        </div>
-                                        <div>
-                                            <label for="disabledRange" class="form-label">Disabled range</label>
-                                            <input type="range" class="form-range" id="disabledRange" disabled>
-                                        </div>
-                                        <div>
-                                            <label for="customRange2" class="form-label">Min and max with steps</label>
-                                            <input type="range" class="form-range" min="0" max="5" step="0.5"
-                                                id="customRange2">
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row mb-3">
-                                    <label class="col-sm-2 col-form-label">Floating labels</label>
-                                    <div class="col-sm-10">
-                                        <div class="form-floating mb-3">
-                                            <input type="email" class="form-control" id="floatingInput"
-                                                placeholder="nameexample.com">
-                                            <label for="floatingInput">Email address</label>
-                                        </div>
-                                        <div class="form-floating mb-3">
-                                            <input type="password" class="form-control" id="floatingPassword"
-                                                placeholder="Password">
-                                            <label for="floatingPassword">Password</label>
-                                        </div>
-                                        <div class="form-floating mb-3">
-                                            <textarea class="form-control" placeholder="Leave a comment here"
-                                                id="floatingTextarea" style="height: 100px;"></textarea>
-                                            <label for="floatingTextarea">Comments</label>
-                                        </div>
-                                        <div class="form-floating mb-3">
-                                            <select class="form-select" id="floatingSelect"
-                                                aria-label="Floating label select example">
-                                                <option selected>Open this select menu</option>
-                                                <option value="1">One</option>
-                                                <option value="2">Two</option>
-                                                <option value="3">Three</option>
-                                            </select>
-                                            <label for="floatingSelect">Works with selects</label>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row mb-5">
-                                    <label class="col-sm-2 col-form-label">Input groups</label>
-                                    <div class="col-sm-10">
-                                        <div class="input-group mb-3">
-                                            <span class="input-group-text" id="basic-addon1"></span>
-                                            <input type="text" class="form-control" placeholder="Username"
-                                                aria-label="Username" aria-describedby="basic-addon1">
-                                        </div>
-
-                                        <div class="input-group mb-3">
-                                            <input type="text" class="form-control" placeholder="Recipient's username"
-                                                aria-label="Recipient's username" aria-describedby="basic-addon2">
-                                            <span class="input-group-text" id="basic-addon2">example.com</span>
-                                        </div>
-
-                                        <label for="basic-url" class="form-label">Your vanity URL</label>
-                                        <div class="input-group mb-3">
-                                            <span class="input-group-text"
-                                                id="basic-addon3">https://example.com/users/</span>
-                                            <input type="text" class="form-control" id="basic-url"
-                                                aria-describedby="basic-addon3">
-                                        </div>
-
-                                        <div class="input-group mb-3">
-                                            <span class="input-group-text">$</span>
-                                            <input type="text" class="form-control"
-                                                aria-label="Amount (to the nearest dollar)">
-                                            <span class="input-group-text">.00</span>
-                                        </div>
-
-                                        <div class="input-group mb-3">
-                                            <input type="text" class="form-control" placeholder="Username"
-                                                aria-label="Username">
-                                            <span class="input-group-text"></span>
-                                            <input type="text" class="form-control" placeholder="Server"
-                                                aria-label="Server">
-                                        </div>
-
-                                        <div class="input-group">
-                                            <span class="input-group-text">With textarea</span>
-                                            <textarea class="form-control" aria-label="With textarea"></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </form><!-- End General Form Elements -->
-
+                            <h5 class="card-title">TODOS LOS USUARIOS</h5>
+                            <div class="table-responsive mt-3">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">ID</th>
+                                            <th scope="col">Nombre</th>
+                                            <th scope="col">Apellido</th>
+                                            <th scope="col">Usuario</th>
+                                            <th scope="col">Correo</th>
+                                            <th scope="col">Tipo de Usuario</th>
+                                            <th scope="col">Acciones</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let usuario of usuarios">
+                                            <td>{{usuario._id}}</td>
+                                            <td>{{usuario.nombre}}</td>
+                                            <td>{{usuario.apellido}}</td>
+                                            <td>{{usuario.usuario}}</td>
+                                            <td>{{usuario.correo}}</td>
+                                            <td>{{usuario.tipoUsuario}}</td>
+                                            <td>
+                                                <button class="btn btn-danger"
+                                                    (click)="eliminarUsuario(usuario._id)">Eliminar</button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
 
                 </div>
+                <!-- ----------------- -->
+                <!-- MOSTRAR AUTOS -->
+                <div class="col-lg-6">
+
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">TODOS LOS AUTOS</h5>
+                            <div class="table-responsive mt-3">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Id</th>
+                                            <th scope="col">Nombre de la agencia</th>
+                                            <th scope="col">Marca</th>
+                                            <th scope="col">Placa</th>
+                                            <th scope="col">Modelo</th>
+                                            <th scope="col">Precio</th>
+                                            <th scope="col">Ciudad del auto</th>
+                                            <th scope="col">Acciones</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let auto of autoss">
+                                            <td>{{auto._id}}</td>
+                                            <td>{{auto.nombreA}}</td>
+                                            <td>{{auto.marca}}</td>
+                                            <td>{{auto.placa}}</td>
+                                            <td>{{auto.modelo}}</td>
+                                            <td>{{auto.precioA}}</td>
+                                            <td>{{auto.ciudad}}</td>
+                                            <td>
+                                                <button class="btn btn-danger"
+                                                    (click)="eliminarAuto(auto._id)">Eliminar</button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- ----------------- -->
+                <!-- MOSTRAR VIAJES -->
+                <div class="col-lg-6">
+
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">TODOS LOS VIAJES</h5>
+                            <div class="table-responsive mt-3">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Id</th>
+                                            <th scope="col">Nombre de la agencia</th>
+                                            <th scope="col">Cuidad de origen</th>
+                                            <th scope="col">Ciudad de destino</th>
+                                            <th scope="col">Dias de vuelo</th>
+                                            <th scope="col">Precio de vuelo</th>
+                                            <th scope="col">Acciones</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let viaje of viajess">
+                                            <td>{{viaje._id}}</td>
+                                            <td>{{viaje.nombreV}}</td>
+                                            <td>{{viaje.ciudadO}}</td>
+                                            <td>{{viaje.ciudadD}}</td>
+                                            <td>{{viaje.dias}}</td>
+                                            <td>{{viaje.precioV}}</td>
+                                            <td>
+                                                <button class="btn btn-danger"
+                                                    (click)="eliminarViaje(viaje._id)">Eliminar</button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- ----------------- -->
+
+
             </div>
         </section>
 

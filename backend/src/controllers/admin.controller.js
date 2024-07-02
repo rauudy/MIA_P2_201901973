@@ -148,9 +148,160 @@ const registrar_viaje = async (req, res) => {
     });
 };
 
+// Tablas de usuarios
+
+const getUsuarios = async (req, res) => {
+    // Recibir los datos enviados desde el cliente
+    const result = await getData('Usuarios');
+
+    if(result instanceof Error) {
+        return res.status(500).json(
+            {
+                status: false,
+                msg: 'Error al obtener datos usuarios',
+                data: result
+            });
+    };
+
+    // Respuesta
+    console.log('Datos de usuarios obtenidos:', result);
+    return res.status(200).json({
+        status: true,
+        msg: 'Datos Usuarios obtenidos',
+        data: result
+    });
+};
+
+
+const deleteUsuarios = async (req, res) => {
+    // Recibir los datos enviados desde el cliente
+    
+    const { id } = req.body;
+    const result = await deleteData('Usuarios', id);
+
+    if(result instanceof Error) {
+        return res.status(500).json(
+            {
+                status: false,
+                msg: 'Error al eliminar usuario',
+                data: result
+            });
+    };
+
+    // Respuesta
+    return res.status(200).json({
+        status: true,
+        msg: 'Eliminacion exitoso',
+        data: result
+    });
+};
+
+// Tablas de autos
+
+const getAutos = async (req, res) => {
+    // Recibir los datos enviados desde el cliente
+    const result = await getData('Autos');
+
+    if(result instanceof Error) {
+        return res.status(500).json(
+            {
+                status: false,
+                msg: 'Error al obtener datos autos',
+                data: result
+            });
+    };
+
+    // Respuesta
+    console.log('Datos de autos obtenidos:', result);
+    return res.status(200).json({
+        status: true,
+        msg: 'Datos Autos obtenidos',
+        data: result
+    });
+};
+
+
+const deleteAutos = async (req, res) => {
+    // Recibir los datos enviados desde el cliente
+    
+    const { id } = req.body;
+    const result = await deleteData('Autos', id);
+
+    if(result instanceof Error) {
+        return res.status(500).json(
+            {
+                status: false,
+                msg: 'Error al eliminar autos',
+                data: result
+            });
+    };
+
+    // Respuesta
+    return res.status(200).json({
+        status: true,
+        msg: 'Eliminacion exitoso',
+        data: result
+    });
+};
+
+// Tablas de viajes
+
+const getViajes = async (req, res) => {
+    // Recibir los datos enviados desde el cliente
+    const result = await getData('Viajes');
+
+    if(result instanceof Error) {
+        return res.status(500).json(
+            {
+                status: false,
+                msg: 'Error al obtener datos viajes',
+                data: result
+            });
+    };
+
+    // Respuesta
+    console.log('Datos de viajes obtenidos:', result);
+    return res.status(200).json({
+        status: true,
+        msg: 'Datos Viajes obtenidos',
+        data: result
+    });
+};
+
+
+const deleteViajes = async (req, res) => {
+    // Recibir los datos enviados desde el cliente
+    
+    const { id } = req.body;
+    const result = await deleteData('Viajes', id);
+
+    if(result instanceof Error) {
+        return res.status(500).json(
+            {
+                status: false,
+                msg: 'Error al eliminar viajes',
+                data: result
+            });
+    };
+
+    // Respuesta
+    return res.status(200).json({
+        status: true,
+        msg: 'Eliminacion exitoso',
+        data: result
+    });
+};
+
+
 module.exports = {
     ciclo_for,
     registro,
     registrar_auto,
-    registrar_viaje
+    registrar_viaje,
+    getUsuarios,
+    deleteUsuarios,
+    getAutos,
+    deleteAutos,
+    getViajes,
+    deleteViajes
 };

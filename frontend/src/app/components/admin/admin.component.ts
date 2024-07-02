@@ -22,6 +22,9 @@ import Swal from 'sweetalert2'
 export class AdminComponent {
 
   currentUser: any;
+  usuarios: any[] = [];
+  autoss: any[] = [];
+  viajess: any[] = [];
 
   constructor(
     private http: UsuarioService,
@@ -229,5 +232,262 @@ export class AdminComponent {
     this.authService.logout();
     this.router.navigate(['/login']);
   }
+
+  getUsuarios(){
+    this.http.consult_get('/admin/getUsuarios').subscribe({
+      next: (data: any) => {
+        if(data.status){
+          console.log('Usuarios tomados');
+          // Swal.fire({
+          //   title: 'Datos usuarios tomados',
+          //   text: 'exito',
+          //   icon: 'success',
+          //   confirmButtonText: 'Aceptar'
+          // });
+          // console.log(data);
+          this.usuarios = data.data;
+          //this.router.navigate(['/login']);
+        }else{
+          Swal.fire({
+            title: 'Error al error al recibir datos',
+            text: 'Error',
+            icon: 'error',
+            confirmButtonText: 'Aceptar'
+          });
+          console.log('Error al recibir datos');
+        }
+      },
+      error: (error: any) => {
+        console.log(error.errors[0]);
+        Swal.fire({
+          title: 'Error al recibir datos',
+          text: 'La base de datos no responde :c',
+          icon: 'error',
+          confirmButtonText: 'Aceptar'
+        });
+        console.log('Error al recibir datos');
+      }
+    }
+    );
+  }
+
+  getAutos(){
+    this.http.consult_get('/admin/getAutos').subscribe({
+      next: (data: any) => {
+        if(data.status){
+          console.log('Autos tomados');
+          // Swal.fire({
+          //   title: 'Datos usuarios tomados',
+          //   text: 'exito',
+          //   icon: 'success',
+          //   confirmButtonText: 'Aceptar'
+          // });
+          // console.log(data);
+          this.autoss = data.data;
+          //this.router.navigate(['/login']);
+        }else{
+          Swal.fire({
+            title: 'Error al error al recibir datos',
+            text: 'Error',
+            icon: 'error',
+            confirmButtonText: 'Aceptar'
+          });
+          console.log('Error al recibir datos');
+        }
+      },
+      error: (error: any) => {
+        console.log(error.errors[0]);
+        Swal.fire({
+          title: 'Error al recibir datos',
+          text: 'La base de datos no responde :c',
+          icon: 'error',
+          confirmButtonText: 'Aceptar'
+        });
+        console.log('Error al recibir datos');
+      }
+    }
+    );
+  }
+
+  getViajes(){
+    this.http.consult_get('/admin/getViajes').subscribe({
+      next: (data: any) => {
+        if(data.status){
+          console.log('Viajes tomados');
+          // Swal.fire({
+          //   title: 'Datos usuarios tomados',
+          //   text: 'exito',
+          //   icon: 'success',
+          //   confirmButtonText: 'Aceptar'
+          // });
+          // console.log(data);
+          this.viajess = data.data;
+          //this.router.navigate(['/login']);
+        }else{
+          Swal.fire({
+            title: 'Error al error al recibir datos',
+            text: 'Error',
+            icon: 'error',
+            confirmButtonText: 'Aceptar'
+          });
+          console.log('Error al recibir datos');
+        }
+      },
+      error: (error: any) => {
+        console.log(error.errors[0]);
+        Swal.fire({
+          title: 'Error al recibir datos',
+          text: 'La base de datos no responde :c',
+          icon: 'error',
+          confirmButtonText: 'Aceptar'
+        });
+        console.log('Error al recibir datos');
+      }
+    }
+    );
+  }
+
+  eliminarUsuario(_id: string) {
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: '¿Estás seguro de que deseas eliminar este usuario?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, eliminar',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if(result.isConfirmed){
+        this.http.consult_post('/admin/deleteUsuario', {id: _id}).subscribe({
+          next: (data: any) => {
+            if(data.status){
+              console.log('Usuario eliminado');
+              Swal.fire({
+                title: 'Usuario eliminado',
+                text: 'Usuario eliminado correctamente',
+                icon: 'success',
+                confirmButtonText: 'Aceptar'
+              });
+              this.getUsuarios();
+            }else{
+              Swal.fire({
+                title: 'Error al error al eliminar usuario',
+                text: 'Error',
+                icon: 'error',
+                confirmButtonText: 'Aceptar'
+              });
+              console.log('Error al eliminar usuario');
+            }
+          },
+          error: (error: any) => {
+            console.log(error.errors[0]);
+            Swal.fire({
+              title: 'Error al eliminar usuario',
+              text: 'Base de datos NO responde',
+              icon: 'error',
+              confirmButtonText: 'Aceptar'
+            });
+            console.log('Error al eliminar usuario');
+          }
+        }
+        );
+      }
+    });
+  }
+
+  eliminarAuto(_id: string) {
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: '¿Estás seguro de que deseas eliminar este auto?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, eliminar',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if(result.isConfirmed){
+        this.http.consult_post('/admin/deleteAuto', {id: _id}).subscribe({
+          next: (data: any) => {
+            if(data.status){
+              console.log('Auto eliminado');
+              Swal.fire({
+                title: 'Auto eliminado',
+                text: 'Auto eliminado correctamente',
+                icon: 'success',
+                confirmButtonText: 'Aceptar'
+              });
+              this.getAutos();
+            }else{
+              Swal.fire({
+                title: 'Error al error al eliminar auto',
+                text: 'Error',
+                icon: 'error',
+                confirmButtonText: 'Aceptar'
+              });
+              console.log('Error al eliminar auto');
+            }
+          },
+          error: (error: any) => {
+            console.log(error.errors[0]);
+            Swal.fire({
+              title: 'Error al eliminar auto',
+              text: 'Base de datos NO responde',
+              icon: 'error',
+              confirmButtonText: 'Aceptar'
+            });
+            console.log('Error al eliminar auto');
+          }
+        }
+        );
+      }
+    });
+  }
+
+  eliminarViaje(_id: string) {
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: '¿Estás seguro de que deseas eliminar este viaje?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, eliminar',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if(result.isConfirmed){
+        this.http.consult_post('/admin/deleteViajes', {id: _id}).subscribe({
+          next: (data: any) => {
+            if(data.status){
+              console.log('Viaje eliminado');
+              Swal.fire({
+                title: 'Viaje eliminado',
+                text: 'Viaje eliminado correctamente',
+                icon: 'success',
+                confirmButtonText: 'Aceptar'
+              });
+              this.getViajes();
+            }else{
+              Swal.fire({
+                title: 'Error al error al eliminar viaje',
+                text: 'Error',
+                icon: 'error',
+                confirmButtonText: 'Aceptar'
+              });
+              console.log('Error al eliminar viaje');
+            }
+          },
+          error: (error: any) => {
+            console.log(error.errors[0]);
+            Swal.fire({
+              title: 'Error al eliminar viaje',
+              text: 'Base de datos NO responde',
+              icon: 'error',
+              confirmButtonText: 'Aceptar'
+            });
+            console.log('Error al eliminar viaje');
+          }
+        }
+        );
+      }
+    });
+  }
+
+
 
 }

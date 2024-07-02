@@ -36,4 +36,30 @@ router.post('/registro_viaje',
     adminController.registrar_viaje
 );
 
+// Consultas
+
+router.post('/admin/getUsuarios',
+    adminController.getUsuarios
+);
+
+router.post('/admin/deleteUsuarios',
+    adminController.deleteUsuarios
+);
+
+router.post('/admin/getAuto',
+    adminController.getAutos
+);
+
+router.post('/admin/deleteAuto',
+    adminController.deleteAutos
+);
+
+router.post('/admin/getViajes',
+    adminController.getViajes
+);
+
+router.post('/admin/deleteViajes',
+    adminController.deleteViajes
+);
+
 module.exports = router;
