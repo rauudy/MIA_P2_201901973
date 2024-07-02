@@ -85,6 +85,38 @@
                                     </div>
 
                                     <div class="col-12">
+                                        <label class="form-label">Tipo de Usuario</label>
+                                        <div class="form-check">
+                                            <input
+                                                class="form-check-input"
+                                                type="radio"
+                                                name="tipoUsuario"
+                                                id="turista"
+                                                value="turista"
+                                                formControlName="tipoUsuario"
+                                                required>
+                                            <label class="form-check-label" for="turista">
+                                                Turista
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input
+                                                class="form-check-input"
+                                                type="radio"
+                                                name="tipoUsuario"
+                                                id="recepcionista"
+                                                value="recepcionista"
+                                                formControlName="tipoUsuario"
+                                                required>
+                                            <label class="form-check-label" for="recepcionista">
+                                                Recepcionista
+                                            </label>
+                                        </div>
+                                        <div *ngIf="form.get('tipoUsuario').invalid && (form.get('tipoUsuario').dirty || form.get('tipoUsuario').touched)" class="invalid-feedback">
+                                            Please, select a user type!
+                                        </div>
+
+                                    <div class="col-12">
                                         <button class="btn btn-primary w-100" type="submit">Create Account</button>
                                     </div>
 
