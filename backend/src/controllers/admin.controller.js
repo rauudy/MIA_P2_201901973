@@ -108,8 +108,49 @@ const registrar_auto = async (req, res) => {
     });
 };
 
+const registrar_viaje = async (req, res) => {
+    // Recibir los datos enviados desde el cliente
+    const { nombreV, ciudadO, ciudadD, dias, precioV  } = req.body;
+
+    // Manipulacion de datos
+    // Insertar datos a la base de datos
+    console.log('Datos recibidos', nombreV, ciudadO, ciudadD, dias, precioV);
+
+    // const p_2 = await bcrypt.hash(password, 10);
+    // await uploadFile2(path, imagen);
+
+    // const ruta_aws = `https://ht2miavacas.s3.amazonaws.com/${path}`;
+
+    // console.log('Ruta AWS', ruta_aws);
+    const result = await insertData('Viajes', {
+        nombreV, 
+        ciudadO, 
+        ciudadD, 
+        dias, 
+        precioV
+    });
+
+    if(result instanceof Error) {
+        return res.status(500).json(
+            {
+                status: false,
+                msg: 'Error al registrar auto',
+                data: result,
+                image: ruta_aws
+            });
+    };
+
+    // Respuesta
+    return res.status(200).json({
+        status: true,
+        msg: 'Registro exitoso',
+        data: result
+    });
+};
+
 module.exports = {
     ciclo_for,
     registro,
-    registrar_auto
+    registrar_auto,
+    registrar_viaje
 };

@@ -32,4 +32,8 @@ router.post('/registro_auto',
     adminController.registrar_auto
 );
 
+router.post('/registro_viaje',
+    adminController.registrar_viaje
+);
+
 module.exports = router;

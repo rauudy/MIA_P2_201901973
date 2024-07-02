@@ -133,7 +133,7 @@ export class AdminComponent {
               icon: 'success',
               confirmButtonText: 'Aceptar'
             });
-            this.form_registro.reset(); // Limpiar el formulario aquí
+            this.form_autos.reset(); // Limpiar el formulario aquí
             // this.router.navigate(['/login']);
           } else {
             Swal.fire({
@@ -163,8 +163,42 @@ export class AdminComponent {
   }
 
   registrar_viaje() {
-    if (this.form_autos.valid) {
-      console.log('Formulario completo');
+    if (this.form_viajes.valid) {
+      // console.log('Formulario completo');
+      this.http.consult_post('/admin/registro_viaje', this.form_viajes.value).subscribe({
+        next: (data: any) => {
+          if (data.status) {
+            // debugger
+            console.log('Viaje registrado');
+            Swal.fire({
+              title: 'Viaje registrado',
+              text: 'Viaje registrado correctamente',
+              icon: 'success',
+              confirmButtonText: 'Aceptar'
+            });
+            this.form_viajes.reset(); // Limpiar el formulario aquí
+            // this.router.navigate(['/login']);
+          } else {
+            Swal.fire({
+              title: 'Error al registrar Viaje',
+              text: 'Error al registrar Viaje',
+              icon: 'error',
+              confirmButtonText: 'Aceptar'
+            });
+            console.log('Error al registrar Viaje');
+          }
+        },
+        error: (error: any) => {
+          console.log(error.errors[0]);
+          Swal.fire({
+            title: 'Error al registrar Viaje',
+            text: 'La base de datos no responde :c',
+            icon: 'error',
+            confirmButtonText: 'Aceptar'
+          });
+          console.log('Error al registrar Viaje');
+        }
+      });
     } else {
       alert('Formulario incompleto');
       console.log('Formulario incompleto');
