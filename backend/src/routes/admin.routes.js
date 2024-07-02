@@ -28,7 +28,4 @@ router.post('/registro',
     adminController.registro
 );
 
-// Nueva ruta para obtener todos los usuarios
-router.get('/usuarios', adminController.obtenerUsuarios);
-
 module.exports = router;
