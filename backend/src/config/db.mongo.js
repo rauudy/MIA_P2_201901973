@@ -31,14 +31,14 @@ const insertData = async(collec, data) => {
     }
 };
 
-const authenticateUser = async (usuario, password) => {
+const authenticateUser = async (username, password) => {
     const mongoClient = new MongoClient(uri);
     try {
         await mongoClient.connect();
         const dbmongo = mongoClient.db(MONGO_DATABASE);
         const coleccion = dbmongo.collection('Usuarios');
-        const user = await coleccion.findOne({ usuario: usuario });
-        const user_correo = await coleccion.findOne({ correo: usuario });
+        const user = await coleccion.findOne({ usuario: username });
+        const user_correo = await coleccion.findOne({ correo: username });
 
         console.log(user);
         if (user && password == user.password) {

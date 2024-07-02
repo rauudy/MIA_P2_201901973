@@ -32,8 +32,8 @@ app.get('/', (req ,res) => {
 })
 
 app.post('/api/login', async (req, res) => {
-    const { username, password } = req.body;
-    const result = await authenticateUser(username, password);
+    const { usuario, password } = req.body;
+    const result = await authenticateUser(usuario, password);
     
     if (result.success) {
         res.status(200).json(result.user);

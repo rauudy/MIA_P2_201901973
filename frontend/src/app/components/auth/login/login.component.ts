@@ -40,7 +40,7 @@ export class LoginComponent {
       console.log("Pass: " + password );
       this.authService.login(usuario, password).subscribe(
         response => {
-          alert('Acceso Correcto');
+          console.log('Acceso Correcto');
           // Handle successful login, e.g., store user data, navigate to dashboard, etc.
         },
         error => {
