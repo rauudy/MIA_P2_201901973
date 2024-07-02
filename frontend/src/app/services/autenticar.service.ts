@@ -21,10 +21,12 @@ export class AuthService {
   login(username: string, password: string): Observable<any> {
     return this.http.post<any>(this.apiUrl, { username, password }).pipe(
       tap(response => {
-        if (response) {
-          this.currentUserSubject.next(response);
-          console.log(">>>>>>>>>>>"+this.currentUserSubject.value);
-        }
+        console.log(response);
+        
+        // if (response) {
+        //   this.currentUserSubject.next(response);
+        //   console.log(">>>>>>>>>>>"+this.currentUserSubject.value);
+        // }
       })
     );
   }
