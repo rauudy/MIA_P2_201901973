@@ -8,7 +8,7 @@ import { tap } from 'rxjs/operators';
 })
 export class AuthService {
   private apiUrl = 'http://3.93.0.237:3000/api/login';
-  // private apiUrl = 'http://localhost:3000/api/login';
+  // private apiUrl = 'http://3.93.0.237:3000/api/login';
 
   private currentUserSubject: BehaviorSubject<any>;
   public currentUser: Observable<any>;

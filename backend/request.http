@@ -1,9 +1,9 @@
 ####
-GET http://localhost:3000/admin/ciclo_for/8
+GET http://3.93.0.237:3000/admin/ciclo_for/8
 
 
 ####
-POST http://localhost:3000/admin/registro
+POST http://3.93.0.237:3000/admin/registro
 Content-Type: application/json
 
 {
