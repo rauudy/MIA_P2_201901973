@@ -42,20 +42,20 @@ export class AdminComponent {
   });
 
   form_autos = new FormGroup({
-    nombre: new FormControl('', Validators.required),
+    nombreA: new FormControl('', Validators.required),
     marca: new FormControl('', Validators.required),
     placa: new FormControl('', Validators.required),
     modelo: new FormControl('', Validators.required),
-    precio: new FormControl('', Validators.required),
+    precioA: new FormControl('', Validators.required),
     ciudad: new FormControl('', Validators.required),
   });
   
   form_viajes = new FormGroup({
-    nombre: new FormControl('', Validators.required),
+    nombreV: new FormControl('', Validators.required),
     ciudadO: new FormControl('', Validators.required),
     ciudadD: new FormControl('', Validators.required),
     dias: new FormControl('', Validators.required),
-    precio: new FormControl('', Validators.required),
+    precioV: new FormControl('', Validators.required),
   });
 
   registrar(){
