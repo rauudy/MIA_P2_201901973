@@ -1,16 +1,28 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
+import { tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   private apiUrl = 'http://18.214.99.177:3000/api/login';
+  // private apiUrl = 'http://localhost:3000/api/login';
 
-  constructor(private http: HttpClient) {}
+  private currentUserSubject: BehaviorSubject<any>;
+  public currentUser: Observable<any>;
 
-  login(usuario: string, password: string): Observable<any> {
-    return this.http.post<any>(this.apiUrl, { usuario, password });
+  constructor(private http: HttpClient) {
+    this.currentUserSubject = new BehaviorSubject<any>(null);
+    this.currentUser = this.currentUserSubject.asObservable();
+  }
+
+  login(username: string, password: string): Observable<any> {
+    return this.http.post<any>(this.apiUrl, { username, password });
+  }
+
+  getCurrentUser(): any {
+    return this.currentUserSubject.value;
   }
 }
