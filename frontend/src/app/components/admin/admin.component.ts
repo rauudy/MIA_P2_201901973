@@ -62,7 +62,8 @@ export class AdminComponent {
                 icon: 'success',
                 confirmButtonText: 'Aceptar'
               });
-              this.router.navigate(['/login']);
+              this.form_registro.reset(); // Limpiar el formulario aquí
+              // this.router.navigate(['/login']);
             }else{
               Swal.fire({
                 title: 'Error al registrar usuario',
