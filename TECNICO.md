@@ -265,3 +265,37 @@ ng build --prod
 - Asegúrate de que todas las comunicaciones con el backend se realicen a través de HTTPS en producción.
 - Implementa guardias de ruta en Angular para proteger las rutas que requieren autenticación.
 - Valida todos los inputs del usuario tanto en el frontend como en el backend.
+- 
+
+# Infraestructura en la Nube (AWS EC2)
+
+## Propósito del EC2
+
+En este proyecto, se utiliza una instancia EC2 de Amazon Web Services para alojar y ejecutar el backend de la aplicación. El EC2 proporciona varias ventajas clave:
+
+1. **Escalabilidad**: Permite ajustar fácilmente los recursos de cómputo según las necesidades de la aplicación.
+
+2. **Flexibilidad**: Ofrece control completo sobre la instancia, permitiendo configurar el entorno según los requisitos específicos del proyecto.
+
+3. **Disponibilidad**: AWS proporciona alta disponibilidad y redundancia para mantener la aplicación en funcionamiento.
+
+4. **Seguridad**: Permite implementar medidas de seguridad robustas, como grupos de seguridad y redes privadas virtuales (VPC).
+
+## Configuración del EC2
+
+La instancia EC2 está configurada de la siguiente manera:
+
+- **Sistema Operativo**: [Especificar el SO, por ejemplo, Amazon Linux 2, Ubuntu, etc.]
+- **Tipo de Instancia**: [Especificar el tipo, por ejemplo, t2.micro, t3.small, etc.]
+- **Región**: [Especificar la región de AWS, por ejemplo, us-east-1]
+- **IP Pública**: 3.93.0.237 (según la URL del backend mencionada en el código)
+
+## Servicios Alojados
+
+La instancia EC2 aloja los siguientes componentes del proyecto:
+
+1. **Servidor Node.js**: Ejecuta la aplicación backend desarrollada con Express.js.
+2. **Base de Datos MongoDB**: [Confirmar si MongoDB está instalado en la misma instancia o en un servicio separado]
+3. **Nginx**: [Si se utiliza como proxy inverso o para servir el frontend]
+
+![image](https://github.com/rauudy/MIA_P2_201901973/assets/66295181/a1734d05-74b4-4d47-890f-e97fb2bd2002)
