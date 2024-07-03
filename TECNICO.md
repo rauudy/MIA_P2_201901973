@@ -299,3 +299,86 @@ La instancia EC2 aloja los siguientes componentes del proyecto:
 3. **Nginx**: [Si se utiliza como proxy inverso o para servir el frontend]
 
 ![image](https://github.com/rauudy/MIA_P2_201901973/assets/66295181/a1734d05-74b4-4d47-890f-e97fb2bd2002)
+
+# Amazon S3 Bucket
+
+## Propósito del Bucket S3
+
+En este proyecto, se utiliza un bucket de Amazon S3 (Simple Storage Service) para almacenar y servir archivos, específicamente imágenes. El bucket S3 ofrece las siguientes ventajas:
+
+1. **Almacenamiento Escalable**: Permite almacenar y recuperar cualquier cantidad de datos.
+2. **Alta Disponibilidad**: Los datos se replican automáticamente en múltiples instalaciones dentro de una región seleccionada.
+3. **Seguridad**: Ofrece características robustas de control de acceso y cifrado.
+4. **Eficiencia en Costos**: Solo se paga por el almacenamiento que se utiliza.
+
+## Configuración del Bucket S3
+
+Según el código proporcionado, el bucket S3 está configurado de la siguiente manera:
+
+- **Nombre del Bucket**: Definido en la variable de entorno `BUCKET_NAME`
+- **Región**: Definida en la variable de entorno `BUCKET_REGION`
+- **Credenciales de Acceso**:
+  - ID de Usuario: Definido en `BUCKET_USER_ID`
+  - Clave Secreta: Definida en `BUCKET_USER_SECRET`
+
+## Uso en la Aplicación
+
+El bucket S3 se utiliza principalmente para:
+
+1. **Almacenamiento de Imágenes de Perfil**: Cuando un usuario se registra o actualiza su perfil, la imagen se sube al bucket S3.
+
+2. **Acceso Público a las Imágenes**: Las imágenes se configuran con acceso público de lectura para que puedan ser accedidas directamente desde la web.
+
+## Implementación
+
+La interacción con el bucket S3 se maneja en el archivo `bucket.js` del backend, que incluye las siguientes funcionalidades principales:
+
+1. **uploadFile**: Sube un archivo al bucket S3 y responde a una solicitud HTTP.
+2. **uploadFile2**: Sube un archivo al bucket S3 y devuelve la URL del archivo subido.
+
+Ejemplo de uso:
+
+```javascript
+const uploadFile2 = async (path, imagen) => {
+    const buffer = new Buffer.from(imagen, 'base64');
+    const s3 = new aws.S3({
+        accessKeyId: BUCKET_USER_ID,
+        secretAccessKey: BUCKET_USER_SECRET,
+        ContentType: 'image/jpeg/png',
+        ACL: 'public-read',
+    });
+
+    const params = {
+        Bucket: BUCKET_NAME,
+        Key: path,
+        Body: buffer,
+    };
+
+    await s3.upload(params, function sync(err, data) {
+        if (err) {
+            console.log("Error", err);
+        } else {
+            console.log('Ubicacion de la imagen: ', data.Location);  
+            return data.Location;
+        }
+    });  
+};
+
+```
+
+**Seguridad**
+
+Usar políticas de bucket para restringir el acceso solo a los recursos necesarios.
+Implementar el cifrado del lado del servidor para los objetos almacenados.
+Utilizar URLs prefirmadas para acceso temporal a objetos privados si es necesario.
+Habilitar el control de versiones para mantener un historial de cambios en los objetos.
+
+**Consideraciones de Costo y Rendimiento**
+
+Implementar políticas de ciclo de vida para mover o eliminar objetos antiguos y reducir costos.
+Utilizar Amazon CloudFront junto con S3 para mejorar el rendimiento en la entrega de contenido.
+
+**Monitoreo**
+
+Configurar métricas de S3 en CloudWatch para supervisar el uso y el rendimiento del bucket.
+Habilitar el registro de acceso al bucket para auditar y analizar el acceso a los objetos.
