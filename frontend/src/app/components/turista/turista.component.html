@@ -64,7 +64,7 @@
                                 <table class="table">
                                     <thead>
                                         <tr>
-                                            <th scope="col">Id</th>
+                                            <!-- <th scope="col">Id</th> -->
                                             <th scope="col">Nombre de la agencia</th>
                                             <th scope="col">Marca</th>
                                             <th scope="col">Placa</th>
@@ -76,7 +76,7 @@
                                     </thead>
                                     <tbody>
                                         <tr *ngFor="let auto of autoss">
-                                            <td>{{auto._id}}</td>
+                                            <!-- <td>{{auto._id}}</td> -->
                                             <td>{{auto.nombreA}}</td>
                                             <td>{{auto.marca}}</td>
                                             <td>{{auto.placa}}</td>
@@ -106,7 +106,7 @@
                                 <table class="table">
                                     <thead>
                                         <tr>
-                                            <th scope="col">Id</th>
+                                            <!-- <th scope="col">Id</th> -->
                                             <th scope="col">Nombre de la agencia</th>
                                             <th scope="col">Cuidad de origen</th>
                                             <th scope="col">Ciudad de destino</th>
@@ -117,7 +117,7 @@
                                     </thead>
                                     <tbody>
                                         <tr *ngFor="let viaje of viajess">
-                                            <td>{{viaje._id}}</td>
+                                            <!-- <td>{{viaje._id}}</td> -->
                                             <td>{{viaje.nombreV}}</td>
                                             <td>{{viaje.ciudadO}}</td>
                                             <td>{{viaje.ciudadD}}</td>
@@ -125,7 +125,7 @@
                                             <td>{{viaje.precioV}}</td>
                                             <td>
                                                 <button class="btn btn-danger"
-                                                    (click)="eliminarViaje(viaje._id)">Eliminar</button>
+                                                    (click)="eliminarViaje(viaje._id)">Reservar</button>
                                             </td>
                                         </tr>
                                     </tbody>
