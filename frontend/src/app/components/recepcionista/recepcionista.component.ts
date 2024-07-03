@@ -19,7 +19,7 @@ import Swal from 'sweetalert2'
   templateUrl: './recepcionista.component.html',
   styleUrl: './recepcionista.component.scss'
 })
-export class TuristaComponent {
+export class RecepcionistaComponent {
 
   currentUser: any;
   usuarios: any[] = [];
